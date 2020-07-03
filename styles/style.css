@@ -1,4 +1,31 @@
 body {
+    background-color: #ccc;
     font-family: Helvetica, Arial;
+    color: #4a4a4a;
     font-size: 20pt;
+}
+
+#catalog {
+    top: 100px;
+    position: absolute;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background-color: #eee;
+    width: 250px;
+    height: 500px;
+    text-align: center;
+    padding: 0.5em;
+    margin: 0.5em;
+    border: 1px solid #a1a1a1;
+    border-radius: 2%;
+}
+
+.title {
+    font-weight: 500;
+    border-bottom: 1px solid #a1a1a1;
 }

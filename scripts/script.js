@@ -15,10 +15,20 @@ Book.prototype.info = function() {
 };
 
 function addBookToLibrary() {
-    const book = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
+    // const book = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
+    const book = new Book();
+    book.title = prompt("Title of book: ");
+    book.author = prompt("Author: ");
+    book.numPages = prompt("Number of pages read so far: ");
+    let readStatus = prompt("Have you already read this book? (Y/N)");
+    if (readStatus === "Y") 
+        book.haveRead = true;
+    else if (readStatus === "N")
+        book.haveRead = false;
     library.push(book);
 }
 
+// called whenever books in library changes
 function render() {
     library.forEach(book => {
         const bookCard = document.createElement("div");
@@ -27,7 +37,5 @@ function render() {
     });
 }
 
-addBookToLibrary();
-addBookToLibrary();
 addBookToLibrary();
 render();
