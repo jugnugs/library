@@ -7,13 +7,34 @@ function Book(title, author, numPages, readStatus) {
     this.readStatus = readStatus;
 }
 
-Book.prototype.info = function () {
-    const readStatus = this.haveRead ? "read" : "not read yet";
-    return `${this.title} by ${this.author}, ${this.numPages} pages, ${readStatus}`
+Book.prototype.makeCard = function () {
+    const card = document.createElement("div");
+    card.classList.add("card");
+    const title = document.createElement("h1");
+    title.textContent = this.title;
+    card.appendChild(title);
+
+    const info = document.createElement("div");
+    info.classList.add("info");
+
+    let line = document.createElement("span");
+    line.textContent = `Author: ${this.author}`;
+    info.appendChild(line);
+
+    line = document.createElement("span");
+    line.textContent = `Read Yet: ${this.readStatus}`;
+    info.appendChild(line);
+
+    line = document.createElement("span");
+    line.textContent = `Number of Pages Read: ${this.numPages}`;
+    info.appendChild(line);
+
+    card.appendChild(info);
+
+    catalog.appendChild(card);
 };
 
 function addBookToLibrary() {
-    // const book = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
     const book = new Book();
     book.title = prompt("Title of book: ");
     book.author = prompt("Author: ");
@@ -27,30 +48,31 @@ function addBookToLibrary() {
 function render() {
     clearDisplay();   
     library.forEach(book => {
-        const card = document.createElement("div");
-        card.classList.add("card");
-        const title = document.createElement("h1");
-        title.textContent = book.title;
-        card.appendChild(title);
+        book.makeCard();
+        // const card = document.createElement("div");
+        // card.classList.add("card");
+        // const title = document.createElement("h1");
+        // title.textContent = book.title;
+        // card.appendChild(title);
 
-        const info = document.createElement("div");
-        info.classList.add("info");
+        // const info = document.createElement("div");
+        // info.classList.add("info");
 
-        let line = document.createElement("span");
-        line.textContent = `Author: ${book.author}`;
-        info.appendChild(line);
+        // let line = document.createElement("span");
+        // line.textContent = `Author: ${book.author}`;
+        // info.appendChild(line);
 
-        line = document.createElement("span");
-        line.textContent = `Read Yet: ${book.readStatus}`;
-        info.appendChild(line);
+        // line = document.createElement("span");
+        // line.textContent = `Read Yet: ${book.readStatus}`;
+        // info.appendChild(line);
 
-        line = document.createElement("span");
-        line.textContent = `Number of Pages Read: ${book.numPages}`;
-        info.appendChild(line);
+        // line = document.createElement("span");
+        // line.textContent = `Number of Pages Read: ${book.numPages}`;
+        // info.appendChild(line);
 
-        card.appendChild(info);
+        // card.appendChild(info);
 
-        catalog.appendChild(card);
+        // catalog.appendChild(card);
     });
 }
 
