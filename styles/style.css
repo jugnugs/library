@@ -2,7 +2,7 @@ body {
     background-color: #ccc;
     font-family: Helvetica, Arial;
     color: #4a4a4a;
-    font-size: 20pt;
+    font-size: 15pt;
 }
 
 #catalog {
@@ -17,15 +17,22 @@ body {
 .card {
     background-color: #eee;
     width: 250px;
-    height: 500px;
-    text-align: center;
-    padding: 0.5em;
+    height: auto;
+    text-align: left;
+    padding: 0.7em;
     margin: 0.5em;
     border: 1px solid #a1a1a1;
     border-radius: 2%;
 }
 
-.title {
+h1 {
+    text-align: center;
+    font-size: 20pt;
     font-weight: 500;
     border-bottom: 1px solid #a1a1a1;
+    margin-bottom: 0.5em;
+}
+
+.info span {
+    display: block;
 }
