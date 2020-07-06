@@ -5,13 +5,23 @@ body {
     font-size: 15pt;
 }
 
-#catalog {
+.center {
     top: 100px;
     position: absolute;
     width: 100vw;
     height: auto;
+    display: block;
+    text-align: center;
+}
+
+button.add {
+    font-size: 15pt;
+}
+
+#catalog {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .card {

@@ -1,10 +1,10 @@
 let library = [];
 
-function Book(title, author, numPages, haveRead) {
+function Book(title, author, numPages, readStatus) {
     this.title = title;
     this.author = author;
     this.numPages = numPages;
-    this.haveRead = haveRead;
+    this.readStatus = readStatus;
 }
 
 Book.prototype.info = function () {
@@ -18,17 +18,14 @@ function addBookToLibrary() {
     book.title = prompt("Title of book: ");
     book.author = prompt("Author: ");
     book.numPages = prompt("Number of pages read so far: ");
-    let readStatus = prompt("Have you already read this book? (Y/N)");
-    if (readStatus === "Y")
-        book.haveRead = true;
-    else if (readStatus === "N")
-        book.haveRead = false;
+    book.readStatus = prompt("Have you already read this book? (Y/N)");
     library.push(book);
 }
 
 // called whenever books in library changes
 // makes new book cards
 function render() {
+    clearDisplay();   
     library.forEach(book => {
         const card = document.createElement("div");
         card.classList.add("card");
@@ -42,9 +39,9 @@ function render() {
         let line = document.createElement("span");
         line.textContent = `Author: ${book.author}`;
         info.appendChild(line);
-        
+
         line = document.createElement("span");
-        line.textContent = `Read Yet: No`;
+        line.textContent = `Read Yet: ${book.readStatus}`;
         info.appendChild(line);
 
         line = document.createElement("span");
@@ -57,7 +54,17 @@ function render() {
     });
 }
 
-const catalog = document.querySelector("#catalog");
+function clearDisplay() {
+    while(catalog.firstChild) {
+        catalog.removeChild(catalog.firstChild);
+    }
+}
 
-addBookToLibrary();
-render();
+const catalog = document.querySelector("#catalog");
+const addBtn = document.querySelector("button.add");
+console.log(addBtn);
+
+addBtn.addEventListener("click", e => {
+    addBookToLibrary();
+    render();
+})
