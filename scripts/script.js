@@ -34,55 +34,36 @@ Book.prototype.makeCard = function () {
     catalog.appendChild(card);
 };
 
+// implement form 
 function addBookToLibrary() {
-    const book = new Book();
-    book.title = prompt("Title of book: ");
-    book.author = prompt("Author: ");
-    book.numPages = prompt("Number of pages read so far: ");
-    book.readStatus = prompt("Have you already read this book? (Y/N)");
-    library.push(book);
+    toggleForm();
+    // const book = new Book();
+    // book.title = prompt("Title of book: ");
+    // book.author = prompt("Author: ");
+    // book.numPages = prompt("Number of pages read so far: ");
+    // book.readStatus = prompt("Have you already read this book? (Y/N)");
+    // library.push(book);
 }
 
 // called whenever books in library changes
 // makes new book cards
 function render() {
     clearDisplay();   
-    library.forEach(book => {
-        book.makeCard();
-        // const card = document.createElement("div");
-        // card.classList.add("card");
-        // const title = document.createElement("h1");
-        // title.textContent = book.title;
-        // card.appendChild(title);
+    library.forEach(book => book.makeCard());
+}
 
-        // const info = document.createElement("div");
-        // info.classList.add("info");
-
-        // let line = document.createElement("span");
-        // line.textContent = `Author: ${book.author}`;
-        // info.appendChild(line);
-
-        // line = document.createElement("span");
-        // line.textContent = `Read Yet: ${book.readStatus}`;
-        // info.appendChild(line);
-
-        // line = document.createElement("span");
-        // line.textContent = `Number of Pages Read: ${book.numPages}`;
-        // info.appendChild(line);
-
-        // card.appendChild(info);
-
-        // catalog.appendChild(card);
-    });
+function toggleForm() {
+    formPop.style.display = "block";
 }
 
 function clearDisplay() {
-    while(catalog.firstChild) {
+    while (catalog.firstChild) {
         catalog.removeChild(catalog.firstChild);
     }
 }
 
 const catalog = document.querySelector("#catalog");
+const formPop = document.querySelector(".form-popup");
 const addBtn = document.querySelector("button.add");
 console.log(addBtn);
 
@@ -90,3 +71,4 @@ addBtn.addEventListener("click", e => {
     addBookToLibrary();
     render();
 })
+
