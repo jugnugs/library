@@ -62,13 +62,22 @@ function clearDisplay() {
     }
 }
 
+function formSubmit(e) {
+    e.preventDefault();
+    let submitter = e.submitter;
+    console.log(e);
+    console.log(e.target.textContent);
+}
+
 const catalog = document.querySelector("#catalog");
 const formPop = document.querySelector(".form-popup");
 const addBtn = document.querySelector("button.add");
-console.log(addBtn);
 
 addBtn.addEventListener("click", e => {
     addBookToLibrary();
     render();
 })
+
+const form = document.querySelector(".form-content form");
+form.addEventListener("submit", formSubmit);
 
